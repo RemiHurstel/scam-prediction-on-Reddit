@@ -43,3 +43,9 @@ for i in range(1,21):
     df = pd.concat([df, convert_json_to_df("data/redditor_personnalities_" + str(i) + ".json")], ignore_index=True)
 
 df.to_csv('data/redditor.csv')
+
+with open('data/redditor_personnalities_dict__.json') as mon_fichier:
+    file_y = json.load(mon_fichier)
+df_y = pd.json_normalize(file_y).T.reset_index()
+df_y.columns = ['name', 'personality']
+df_y.to_csv('data/dict.csv')
