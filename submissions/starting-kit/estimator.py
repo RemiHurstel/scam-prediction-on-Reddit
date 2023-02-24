@@ -1,3 +1,7 @@
+from sklearn.base import BaseEstimator
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
 import pandas as pd 
 import pandas as pd
 from nltk.corpus import stopwords
@@ -44,8 +48,33 @@ def preprocessing(x):
      l=(' ').join(lemmatize)
      return l
  
-def preprocess(self, X):
+def preprocess_data(X):
     preprocess_text = [preprocessing(i) for i in X['body']]
     X["preprocess_txt"] = preprocess_text
     return X
 
+ 
+class get_estimator(BaseEstimator):
+    
+    def __init__(self):
+       
+        self.text = ['preprocessed_body']
+        self.numerical = ['link_karma','comment_karma']
+        self.categorical = ['type',  'subreddit']
+        
+        self.model = Pipeline([
+        ('vect', CountVectorizer(max_features=30000, analyzer='word', stop_words=None)),
+        ('tfid', TfidfTransformer()),
+        ('clf',  LogisticRegression()),
+        ])
+
+        
+    def fit(self, X, y):
+        X=preprocess_data(X)
+        self.model.fit(X["preprocess_txt"],y)
+        return self
+ 
+    def predict(self, X):
+        X=preprocess_data(X)
+        pred= self.model.predict(X["preprocess_txt"])
+        return pred
