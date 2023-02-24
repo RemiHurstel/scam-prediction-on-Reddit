@@ -21,6 +21,7 @@ def convert_json_to_df(json_file_path):
             list_type.append('comment')
             list_body.append(comments[j]['body'])
             list_subreddit.append(comments[j]['subreddit'])
+            
         for k in range(len(submissions)):
             list_name.append(data['name'][i])
             list_comment_karma.append(data['comment_karma'][i])
@@ -42,16 +43,16 @@ df = convert_json_to_df("data/redditor_personnalities_0.json")
 for i in range(1,21):
     df = pd.concat([df, convert_json_to_df("data/redditor_personnalities_" + str(i) + ".json")], ignore_index=True)
 
-df.to_csv('data/redditor.csv')
+df.to_csv('data/redditor.csv',index=False)
 
 with open('data/redditor_personnalities_dict__.json') as mon_fichier:
     file_y = json.load(mon_fichier)
 df_y = pd.json_normalize(file_y).T.reset_index()
 df_y.columns = ['name', 'personality']
-df_y.to_csv('data/dict.csv')
+df_y.to_csv('data/dict.csv',index=False)
 
 df2 = convert_json_to_df("data/redditor_info_scammer_5.json")
-df2.to_csv('data/scammer.csv')
+df2.to_csv('data/scammer.csv',index=False)
 
 T=[1]*len(df2)
 df2['label'] = T
@@ -62,4 +63,4 @@ df['label'] = T1
 
 df__=pd.concat([df,df2], ignore_index=True)
 df__= shuffle(df__)
-df__.to_csv('data/data.csv')
+df__.to_csv('data/data.csv',index=False)
