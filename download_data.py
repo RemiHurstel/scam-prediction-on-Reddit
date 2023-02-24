@@ -49,3 +49,6 @@ with open('data/redditor_personnalities_dict__.json') as mon_fichier:
 df_y = pd.json_normalize(file_y).T.reset_index()
 df_y.columns = ['name', 'personality']
 df_y.to_csv('data/dict.csv')
+
+"""df2 = convert_json_to_df("data/redditor_info_scammer_5.json")
+df2.to_csv('data/scammer.csv')"""
