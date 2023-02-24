@@ -1,6 +1,6 @@
 import pandas as pd
 import json
-
+from sklearn.utils import shuffle
 
 def convert_json_to_df(json_file_path):
     data = pd.read_json(json_file_path)
@@ -61,4 +61,5 @@ T1=[0]*len(df)
 df['label'] = T1
 
 df__=pd.concat([df,df2], ignore_index=True)
+df__= shuffle(df__)
 df__.to_csv('data/data.csv')
