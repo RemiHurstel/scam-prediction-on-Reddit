@@ -50,5 +50,15 @@ df_y = pd.json_normalize(file_y).T.reset_index()
 df_y.columns = ['name', 'personality']
 df_y.to_csv('data/dict.csv')
 
-"""df2 = convert_json_to_df("data/redditor_info_scammer_5.json")
-df2.to_csv('data/scammer.csv')"""
+df2 = convert_json_to_df("data/redditor_info_scammer_5.json")
+df2.to_csv('data/scammer.csv')
+
+T=[1]*len(df2)
+df2['label'] = T
+
+df=pd.read_csv('data/redditor.csv')
+T1=[0]*len(df)
+df['label'] = T1
+
+df__=pd.concat([df,df2], ignore_index=True)
+df__.to_csv('data/data.csv')
