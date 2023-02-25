@@ -1,27 +1,24 @@
-from sklearn.base import BaseEstimator
-from sklearn.pipeline import make_pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-import pandas as pd 
+import re
+import nltk
 import pandas as pd
+
+from sklearn.base import BaseEstimator
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.linear_model import LogisticRegression
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import CountVectorizer
+
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-import re
-import nltk
-import pickle
+
 nltk.download('omw-1.4')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('punkt')
 lemma = WordNetLemmatizer()
 stop_words = stopwords.words('english')
-from sklearn.base import BaseEstimator
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.feature_extraction.text import CountVectorizer
 
 
 def remove_emoji(string):
