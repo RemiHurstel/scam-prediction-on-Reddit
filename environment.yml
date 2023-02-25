@@ -1,0 +1,21 @@
+name: scam-prediction-on-reddit
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - numpy
+  - scipy
+  - pandas>=0.23
+  - nltk
+  - emot
+  - wordcloud
+  - scikit-learn
+  - matplotlib
+  - json
+  - re
+  - seaborn>=0.11.1
+
+  - pip
+  - pip:
+      - ramp-workflow
+      
