@@ -9,3 +9,4 @@ matplotlib
 json
 re
 seaborn>=0.11.1
+warnings
