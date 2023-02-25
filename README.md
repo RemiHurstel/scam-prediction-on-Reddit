@@ -9,8 +9,9 @@ Get started with the [notebook](https://github.com/superjedi94/scam-prediction-o
 1. Problem statement 
 2. Data Exploration
 3. Pre-processing
-4. Modeling 
-5. Submission Details 
+4. Baseline Model
+5. Evaluation
+6. Submission Details 
 
 ## Submission 
 Submissions need to be located in the submissions folder.
