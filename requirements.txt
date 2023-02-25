@@ -4,3 +4,9 @@ pandas
 nltk
 emot
 wordcloud
+scikit-learn
+matplotlib
+json
+re
+wordclouds
+seaborn
