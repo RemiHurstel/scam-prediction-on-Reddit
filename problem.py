@@ -21,7 +21,7 @@ Predictions = rw.prediction_types.make_multiclass(
     label_names=_prediction_label_names
     )
 
-workflow = rw.workflows.Classifier()
+workflow = rw.workflows.Estimator()
 
 score_type_1 = rw.score_types.ROCAUC(name='auc')
 score_type_2 = rw.score_types.Accuracy(name='acc')
