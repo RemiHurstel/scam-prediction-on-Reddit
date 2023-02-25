@@ -18,3 +18,6 @@ Submissions need to be located in the submissions folder.
 To run a specific submission, you can use the ramp-test command line:
 ramp-test --submission my_submission
 
+## Help
+Go to the `ramp-workflow` [wiki](https://github.com/paris-saclay-cds/ramp-workflow/wiki) for more help on the [RAMP](https://ramp.studio) ecosystem.
+
