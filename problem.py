@@ -1,9 +1,11 @@
 import os
+import numpy as np
 from glob import glob
 import pandas as pd
 from sklearn.model_selection import ShuffleSplit
 import rampwf as rw
-
+from rampwf.workflows.sklearn_pipeline import SKLearnPipeline
+from rampwf.workflows.sklearn_pipeline import Estimator
 # --------------------------------------------------
 ####### Challenge title
 
@@ -11,6 +13,7 @@ problem_title = "Scam prediction on Reddit"
 
 # --------------------------------------------------
 
+_target_column_name = 'label'
 
 _prediction_label_names = [0, 1]
 
@@ -31,7 +34,11 @@ score_types = [
         weights=[1./4, 1./4, 2./4], precision=3),
 ]
 
-_target_column_name = 'label'
+
+
+def get_cv(X, y):
+    cv = ShuffleSplit(n_splits=10, test_size=0.25, random_state=57)
+    return cv.split(X, y)
 
 def _get_data(path, f_name):
     dataset = pd.read_csv(os.path.join(path, 'data', f_name))
@@ -51,6 +58,3 @@ def get_test_data(path="."):
     return _get_data(path, f_name)
 
 
-def get_cv(X, y):
-    cv = ShuffleSplit(n_splits=10, test_size=0.25, random_state=57)
-    return cv.split(X, y)
