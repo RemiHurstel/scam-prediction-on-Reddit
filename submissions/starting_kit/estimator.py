@@ -71,12 +71,8 @@ class get_estimator(BaseEstimator):
         self.model.fit(X["preprocess_txt"],y)
         return self
  
-    def predict(self, X):
-        X=preprocess_data(X)
-        pred= self.model.predict(X["preprocess_txt"])
-        return pred
     
-    def predict_proba(self, X):
+    def predict(self, X):
         X=preprocess_data(X)
         pred= self.model.predict_proba(X["preprocess_txt"])
         return pred
