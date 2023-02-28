@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 from sklearn.utils import shuffle
+from sklearn.model_selection import train_test_split
 
 def convert_json_to_df(json_file_path):
     data = pd.read_json(json_file_path)
@@ -63,4 +64,7 @@ df['label'] = T1
 
 df__=pd.concat([df,df2], ignore_index=True)
 df__= shuffle(df__)
-df__.to_csv('data/data.csv',index=False)
+
+train, test = train_test_split(df__, test_size=0.2, random_state=42)
+train.to_csv('data/train.csv',index=False)
+test.to_csv('data/test.csv',index=False)
