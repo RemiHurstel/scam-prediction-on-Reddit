@@ -32,15 +32,12 @@ def get_cv(X, y):
 
 def _get_data(path, f_name):
     dataset = pd.read_csv(os.path.join(path, 'data', f_name))
-    X = dataset.drop([_target_column_name], axis=1)
-    y = dataset[_target_column_name].values
+    return dataset
 
-    return X, y
-
-def get_train_data(path="."):
+def get_train_data(path=""):
     f_name = "train.csv"
     return _get_data(path, f_name)
 
-def get_test_data(path="."):
+def get_test_data(path=""):
     f_name = "test.csv"
     return _get_data(path, f_name)
